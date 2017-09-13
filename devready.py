@@ -6,6 +6,11 @@ from urllib import urlretrieve, urlopen
 
 URL=""
 
+from platform import *
+SYSTEM=system()
+
+SPECIFICURL=SYSTEM+ ('/'+dist()[0]) if SYSTEM == "Linux" else ''
+
 system("sudo pip install redis")
 pool = redis.ConnectionPool(host='redis-19740.c10.us-east-1-3.ec2.cloud.redislabs.com', port=19740, db=0)
 r = redis.Redis(connection_pool=pool)
@@ -15,7 +20,7 @@ from os import listdir
 files=listdir()
 
 print "fetching files list related dev component to look for"
-componentfiles=load(urlopen(URL+"/componentfiles").read())
+componentfiles=load(urlopen(URL).read())
 
 components=set()
 for file in files:
