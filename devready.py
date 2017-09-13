@@ -4,7 +4,7 @@
 from urllib import urlretrieve, urlopen
 
 
-URL=""
+URL="https://s3.amazonaws.com/ntadiko/makedevready/"
 
 from platform import *
 SYSTEM=system()
