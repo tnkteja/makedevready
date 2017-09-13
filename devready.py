@@ -16,7 +16,7 @@ from os import listdir
 files=listdir()
 
 print "fetching files list related dev component to look for"
-componentfiles=load(urlopen(URL).read())
+componentfiles=load(urlopen(URL+"/componentfiles").read())
 
 components=set()
 for file in files:
