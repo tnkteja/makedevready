@@ -6,10 +6,8 @@ from urllib import urlretrieve, urlopen
 
 URL="https://s3.amazonaws.com/ntadiko/makedevready/"
 
-from platform import *
-SYSTEM=system()
-
-SPECIFICURL=SYSTEM+ ('/'+dist()[0]) if SYSTEM == "Linux" else ''
+# Package manager identification code
+PACKAGE_MANAGER="apt-get"
 
 print "Reading the home directory of repository"
 from os import listdir
@@ -31,7 +29,7 @@ for component in components:
 
 for component in components:
     print "Fetching rules to install component",component
-    rules=load(urlopen(URL+"/rules/"+component).read())
+    rules=load(urlopen(URL+"/rules/"+component+'/'+PACKAGE_MANAGER).read())
     print "installing component",component
     
     for command in rules:
