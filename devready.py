@@ -11,10 +11,6 @@ SYSTEM=system()
 
 SPECIFICURL=SYSTEM+ ('/'+dist()[0]) if SYSTEM == "Linux" else ''
 
-system("sudo pip install redis")
-pool = redis.ConnectionPool(host='redis-19740.c10.us-east-1-3.ec2.cloud.redislabs.com', port=19740, db=0)
-r = redis.Redis(connection_pool=pool)
-
 print "Reading the home directory of repository"
 from os import listdir
 files=listdir()
